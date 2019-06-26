@@ -52,7 +52,14 @@ class ChatScreenState extends State<ChatScreen> {
               margin: EdgeInsets.symmetric(horizontal: 4.0),
               child: IconButton(
                 icon: Icon(Icons.send),
-                onPressed: () => _handleSubmitted(_textController.text),
+                onPressed: () {
+                  if(_textController.text.length == 0){
+                    return null;
+                  }
+                  else{
+                    return _handleSubmitted(_textController.text);
+                  }
+                }
               ),
             )
           ],
