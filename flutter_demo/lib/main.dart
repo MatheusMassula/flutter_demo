@@ -65,7 +65,26 @@ class ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(title: new Text("Friendlychat")),
-      body: _buildTextComposer()
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            child: ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              reverse: true,
+              itemBuilder: (_, int index) => _messages[index],
+              itemCount: _messages.length,
+            ),
+          ),
+
+          Divider(height: 1.0),
+          
+          Container(
+            decoration: BoxDecoration(color: Theme.of(context).cardColor,),
+            child: _buildTextComposer(),
+          )
+
+        ],
+      )
 
     );
   }
